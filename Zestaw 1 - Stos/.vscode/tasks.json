@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Pierwszy projekt",
+        "type": "shell",
+        "command": "g++",
+        "args": ["-std=c++20", "-Wall", "-o", "stos", "stos.cpp"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+}
