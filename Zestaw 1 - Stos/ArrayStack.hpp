@@ -1,37 +1,41 @@
+#include <stdexcept>
+
 template<class T, int N>
 class Stack {
     public:
     
     template<class U> // Uniwersalne referencje
     void push(U&& x) {
-        if (length == N) {
+        if (dlugosc == N) {
             return;
         }
-        data[length++] = x;
+        stos[dlugosc++] = x;
     }
     
     T pop() {
         if (empty()) {
-            return null;
+            throw std::out_of_range ("Read from empty stack");
         }
-        return data[--length];
+        return stos[--dlugosc];
     }
     
     T& top() {
-        return &data[length];
+        return &stos[dlugosc];
     }
     
     int size() {
-        return length;
+        return dlugosc;
     }
     
     bool empty() {
-        if (length == 0) {
-            printf ("EMPTY");
+        if (dlugosc == 0) {
+            return true;
+        } else {
+            return false;
         }
     }
     
     private:
-    T data[N];
-    int length;
+    T stos[N];
+    int dlugosc;
 };

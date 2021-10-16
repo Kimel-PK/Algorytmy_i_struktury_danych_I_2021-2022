@@ -3,35 +3,43 @@ class Stack {
     public:
     
     template<class T>
-    struct Costam {
-        T value;
-        Costam* wskaznik;
+    struct Node {
+        T wartosc;
+        Node* wskaznik;
     }
     
     template<class U> // Uniwersalne referencje
     void push(U&& x) { // Wstawia element x na stos
         
+        // stos jest pełny
         if (size() == N)
             return;
         
-        stos[length++] = x;
+        stos[dlugosc++] = x;
         
     } 
     
     T pop() { // Usuwa element ze stosu i zwraca jego wartość
         
+        // !! stos jest pusty
+        if (empty())
+            return;
+            
+        T wynik = top()->wartosc; // !! kopiowanie elementu a nie przypisanie wartości
+        delete top;
+        return wynik;
     }
     
     T& top() { // Zwraca referencję do najmłodszego elementu
-        return data[length];
+        return &data[dlugosc];
     }
     
     int size() { // Zwraca liczbę elementów na stosie
-        return length;
+        return dlugosc;
     }
     
     bool empty() { // Sprawdza czy stos jest pusty
-        if (length == 0) {
+        if (dlugosc == 0) {
             return true;
         } else {
             return false;
@@ -39,6 +47,6 @@ class Stack {
     }
     
     private:
-    T data[N];
-    int length;
+    T stos[N];
+    int dlugosc;
 };
