@@ -2,10 +2,14 @@ template<class T, int N>
 class Stack {
     public:
     
-    template<class T>
+    template<class U>
     struct Node {
-        T wartosc;
+        U wartosc;
         Node* wskaznik;
+    };
+    
+    Stack () {
+		stos = new T[N];
     }
     
     template<class U> // Uniwersalne referencje
@@ -31,7 +35,7 @@ class Stack {
     }
     
     T& top() { // Zwraca referencję do najmłodszego elementu
-        return &data[dlugosc];
+        return &stos[dlugosc];
     }
     
     int size() { // Zwraca liczbę elementów na stosie
@@ -47,6 +51,6 @@ class Stack {
     }
     
     private:
-    T stos[N];
+    T* stos;
     int dlugosc;
 };

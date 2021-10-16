@@ -1,63 +1,63 @@
 #include <stdio.h>
 #include <string>
-#include <ArrayStack.hpp>
+#include <iostream>
+#include "ArrayStack.hpp"
 
 using namespace std;
 
-// 2-(a*3-(4+a*c-b))
-// 
-// -(a*3-(4+a*c-b))			            2
-// (a*3-(4+a*c-b))		    -	        2
-// a*3-(4+a*c-b))		    -(	        2
-// *3-(4+a*c-b))  	    	-(	        2 a
-// 3-(4+a*c-b))	    	    -(*     	2 a
-// -(4+a*c-b))		        -(*	        2 a 3
-// (4+a*c-b))		        -(-     	2 a 3 *
-// 4+a*c-b))		        -(-(    	2 a 3 *
-// +a*c-b))		            -(-(	    2 a 3 * 4
-// a*c-b))		            -(-(+	    2 a 3 * 4
-// *c-b))		            -(-(+	    2 a 3* 4 a
-// c-b))		            -(-(+*  	2 a 3 * 4 a
-// -b))		                -(-(+*  	2 a 3 * 4 a c
-// b))		                -(-(-	    2 a 3 * 4 a c * +
-// ))		                -(-(-   	2 a 3 * 4 a c * + b
-// )		                -(-	        2 a 3 * 4 a c * + b -
-// 		                    -	        2 a 3 * 4 a c * + b - -
-// 		                    	        2 a 3 * 4 a c * + b - - -
+int PriorytetOperatora (char znak) {
+	if (znak == '(' || znak == ')') {
+		return 0;
+	} else if (znak == '=') {
+		return 1;
+	} else if (znak == '-' || znak == '+') {
+		return 2;
+	} else if (znak == '*' || znak == '/') {
+		return 3;
+	} else if (znak == '^') {
+		return 4;
+	} else {
+		throw out_of_range ("Nieznany operator");
+	}
+}
 
 int main (int argc, char *argv[]) {
     
     string wejscie;
-    string result = (char*)malloc (); // wyjście nie może być większe niż wejście
+    string wyjscie;
+    
+    cin >> wejscie;
+    
+	Stack<char, 20> stos;
 	
-	Stack<int, 20> stack;
+	for (char znak : wejscie) {
+		
+		if (znak > 47 && znak < 58) { // znak jest liczbą
+            wyjscie += znak; // wrzuć na wyjście
+        } else { // znak jest operatorem
+			if (znak == '(') {
+				stos.push (znak);
+			} else if (znak == ')') {
+				while (stos.top() != '(') {
+					wyjscie += stos.pop();
+				}
+				stos.pop();
+			} else if (stos.size() > 0 && PriorytetOperatora (znak) > PriorytetOperatora (stos.top())) { // jeśli priorytet jest wyższy niż na stosie
+				stos.push (znak); // wrzuć na stos
+			} else {
+				while (stos.size() > 0 && PriorytetOperatora (znak) <= PriorytetOperatora (stos.top())) { // priotytet jest niższy
+					wyjscie += stos.pop(); // zrzucaj ze stosu aż będzie
+				}
+				stos.push (znak);
+			}
+		}
+        
+	}
 	
-    for (int i = 0; i < wejscie.length(); i++) {
-        
-        if (stoi(string(1, wejscie[i])) == 0) { // znak jest liczbą
-            // wrzuć na wyjście
-        } else if (wejscie[i] == '(') { // znak jest operatorem innym niż zakończenie nawiasu
-            // wrzuć na stos
-        } else if (wejscie[i] == ')') { // znak jest końcem nawiasu
-            while (stack.top() != ')') {
-                
-            }
-        }
-        
-    }
-    
-    // (11 + ((((1 + 2) * (4 - 3)) + (4 / 2)) * (8 - 6)))
-    
-    // 
-    
-    // weź pierwszy element stringa
-    // jeśli to liczba
-        // wypisz do wyjścia
-    // jeśli operator
-        // wrzuć operator na stos
-    // jeśli nawias zamykający
-        // zrzuć ze stosu wszystkie operatory aż do "("
-    
-    // 12+34+*
+	while (stos.size() > 0) {
+		wyjscie += stos.pop();
+	}
+	
+	cout << wyjscie << endl;
     
 }

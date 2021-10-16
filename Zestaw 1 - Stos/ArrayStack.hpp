@@ -4,10 +4,14 @@ template<class T, int N>
 class Stack {
     public:
     
+    Stack () {
+		stos = new T[N];
+    }
+    
     template<class U> // Uniwersalne referencje
     void push(U&& x) {
         if (dlugosc == N) {
-            return;
+            throw std::out_of_range ("Push on full stack");
         }
         stos[dlugosc++] = x;
     }
@@ -20,7 +24,10 @@ class Stack {
     }
     
     T& top() {
-        return &stos[dlugosc];
+		if (empty()) {
+            throw std::out_of_range ("Read from empty stack");
+        }
+        return stos[dlugosc - 1];
     }
     
     int size() {
@@ -36,6 +43,6 @@ class Stack {
     }
     
     private:
-    T stos[N];
-    int dlugosc;
+    T* stos;
+    int dlugosc = 0;
 };
