@@ -1,0 +1,4 @@
+- Omów przykłady zastosowania stosu?
+- Dlaczego operacja pop() z std::stack nie zwraca wartości elementu?
+- Dlaczego operacja pop() z std::stack nie zwraca referencji do elementu?
+- Do czego służy funkcja std::queue::emplace?

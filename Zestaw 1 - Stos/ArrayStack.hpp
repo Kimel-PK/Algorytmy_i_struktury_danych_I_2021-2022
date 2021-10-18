@@ -8,6 +8,10 @@ class Stack {
 		stos = new T[N];
     }
     
+    ~Stack () {
+        delete [] stos;
+    }
+    
     template<class U> // Uniwersalne referencje
     void push(U&& x) {
         if (dlugosc == N) {
@@ -17,7 +21,7 @@ class Stack {
     }
     
     T pop() {
-        if (empty()) {
+        if (empty()) { // stos jest pusty
             throw std::out_of_range ("Read from empty stack");
         }
         return stos[--dlugosc];

@@ -8,7 +8,7 @@ int main () {
     
     srand(time(NULL)); // ustawiamy ziarno generatora losowego
     
-    int n = rand() % 1000000;
+    int n = rand() % 100;
     cout << n << endl;
     
     for (int i = 0; i < n; i++) {   

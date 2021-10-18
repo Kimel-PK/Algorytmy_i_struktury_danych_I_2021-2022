@@ -2,40 +2,52 @@ template<class T, int N>
 class Stack {
     public:
     
-    template<class U>
     struct Node {
-        U wartosc;
+        T wartosc;
         Node* wskaznik;
     };
     
-    Stack () {
-		stos = new T[N];
+    Stack () {}
+    
+    ~Stack () {
+        std::cout << "destruktor" << std::endl;
+        while (!empty()) {
+            pop();
+        }
     }
     
     template<class U> // Uniwersalne referencje
     void push(U&& x) { // Wstawia element x na stos
         
         // stos jest pełny
-        if (size() == N)
-            return;
+        if (size() == N) {
+            throw std::out_of_range ("Push on full stack");
+        }
         
-        stos[dlugosc++] = x;
+        Node* temp = new Node;
+        temp->wartosc = x;
+        temp->wskaznik = stos;
+        stos = temp;
+        dlugosc++;
         
     } 
     
     T pop() { // Usuwa element ze stosu i zwraca jego wartość
         
-        // !! stos jest pusty
-        if (empty())
-            return;
-            
-        T wynik = top()->wartosc; // !! kopiowanie elementu a nie przypisanie wartości
-        delete top;
+        if (empty()) { // stos jest pusty
+            throw std::out_of_range ("Read from empty stack");
+        }
+        
+        T wynik = stos->wartosc; // !! kopiowanie elementu a nie przypisanie wartości
+        Node* poprzedni = stos->wskaznik;
+        delete stos;
+        stos = poprzedni;
+        dlugosc--;
         return wynik;
     }
     
     T& top() { // Zwraca referencję do najmłodszego elementu
-        return &stos[dlugosc];
+        return &stos->wartosc;
     }
     
     int size() { // Zwraca liczbę elementów na stosie
@@ -51,6 +63,6 @@ class Stack {
     }
     
     private:
-    T* stos;
-    int dlugosc;
+    Node* stos;
+    int dlugosc = 0;
 };
