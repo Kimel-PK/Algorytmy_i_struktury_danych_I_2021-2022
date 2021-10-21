@@ -1,35 +1,47 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "Stack",
-        "type": "shell",
-        "command": "g++",
-        "args": ["-std=c++11", "-Wall", "-o", "Stack.exe", "Stack.cpp"],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      },
-      {
-        "label": "Generator",
-        "type": "shell",
-        "command": "g++",
-        "args": ["-std=c++11", "-Wall", "-o", "Generator.exe", "Generator.cpp"],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      },
-      {
-        "label": "ONP",
-        "type": "shell",
-        "command": "g++",
-        "args": ["-std=c++11", "-Wall", "-o", "ONP.exe", "ONP.cpp"],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      }
-    ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Stack",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "Stack.exe", "Stack.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Generator",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "Generator.exe", "Generator.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "ONP",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "ONP.exe", "ONP.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Kopiuj rozwiązanie",
+			"type": "shell",
+			"options": {    
+				"cwd": "${workspaceFolder}"
+			},
+			"command": "rm ./Pegaz/*.cpp; rm ./Pegaz/*.hpp; rm ./Pegaz/Makefile; cp *.cpp ./Pegaz/; cp *.hpp ./Pegaz/; cp Makefile ./Pegaz/",
+			"group": {
+			  "kind": "build",
+			  "isDefault": true
+			}
+		  }
+	]
 }

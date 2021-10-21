@@ -1,31 +1,27 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <map>
 #include "ArrayStack.hpp"
 
 using namespace std;
-
-int PriorytetOperatora (char znak) {
-	if (znak == '(' || znak == ')') {
-		return 0;
-	} else if (znak == '=') {
-		return 1;
-	} else if (znak == '-' || znak == '+') {
-		return 2;
-	} else if (znak == '*' || znak == '/') {
-		return 3;
-	} else if (znak == '^') {
-		return 4;
-	} else {
-		throw out_of_range ("Nieznany operator");
-	}
-}
 
 int main (int argc, char *argv[]) {
     
     string wejscie;
     string wyjscie;
     bool cyfra = false;
+	
+	map<char, int> priorytetOperatora {
+		{'(', 0},
+		{')', 0},
+		{'=', 1},
+		{'-', 2},
+		{'+', 2},
+		{'*', 3},
+		{'/', 3},
+		{'^', 4},
+	};
 	
     getline(cin, wejscie);
     
@@ -53,10 +49,10 @@ int main (int argc, char *argv[]) {
 					wyjscie += " ";
 				}
 				stos.pop();
-			} else if (stos.size() > 0 && PriorytetOperatora (znak) > PriorytetOperatora (stos.top())) { // jeśli priorytet jest wyższy niż na stosie
+			} else if (stos.size() > 0 && priorytetOperatora [znak] > priorytetOperatora [stos.top()]) { // jeśli priorytet jest wyższy niż na stosie
 				stos.push (znak); // wrzuć na stos
 			} else {
-				while (stos.size() > 0 && PriorytetOperatora (znak) <= PriorytetOperatora (stos.top())) { // priotytet jest niższy
+				while (stos.size() > 0 && priorytetOperatora [znak] <= priorytetOperatora [stos.top()]) { // priotytet jest niższy
 					wyjscie += stos.pop(); // zrzucaj ze stosu aż będzie
 					wyjscie += " ";
 				}
@@ -67,8 +63,8 @@ int main (int argc, char *argv[]) {
 	}
 	
 	while (stos.size() > 0) {
-		wyjscie += stos.pop();
 		wyjscie += " ";
+		wyjscie += stos.pop();
 	}
 	
 	cout << wyjscie << endl;

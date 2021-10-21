@@ -1,7 +1,5 @@
-DIR = `basename $(CURDIR)`
-
-NAME2 = Generator
 NAME1 = Stack
+NAME2 = Generator
 NAME3 = ONP
 
 EXEC1  = $(NAME1).x
@@ -15,29 +13,23 @@ OBJS3  = $(NAME3).o
 CFLAGS = -Wall -std=c11 -pedantic -O -fPIC
 LFLAGS = -Wall -std=c11 -pedantic -O
 
-CO = gcc
+CO = g++
 LD = $(CO)
-
-AR = ar
-
-ARFLAGS = rsv
 
 %.o: %.c
 	$(CO) $(CFLAGS) -c $<
 
-.PHONY: all
+.PHONY: all clean
 all: $(EXEC1) $(EXEC2) $(EXEC3)
 
-$(EXEC1): $(OBJS1) $(LIBS1)
+$(EXEC1): $(OBJS1)
 	$(LD) -o $@ $(LFLAGS) $^
 	
-$(EXEC2): $(OBJS2) $(LIBS2)
+$(EXEC2): $(OBJS2)
 	$(LD) -o $@ $(LFLAGS) $^
 	
-$(EXEC3): $(OBJS3) $(LIBS3)
+$(EXEC3): $(OBJS3)
 	$(LD) -o $@ $(LFLAGS) $^
-
-.PHONY: clean tar
 
 clean:                                                     
-	rm -f *.o  *~ *.a *.so *.x core core* a.out; rm -rf ${LIB_DIR}
+	rm -f *.o  *~ *.a *.so *.x core core* a.out *.exe *.exe.stackdump

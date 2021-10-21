@@ -10,7 +10,6 @@ class Stack {
     Stack () {}
     
     ~Stack () {
-        std::cout << "destruktor" << std::endl;
         while (!empty()) {
             pop();
         }
