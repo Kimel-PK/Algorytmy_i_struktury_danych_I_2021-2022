@@ -53,7 +53,7 @@ int main (int argc, char *argv[]) {
 				stos.push (znak); // wrzuć na stos
 			} else {
 				while (stos.size() > 0 && priorytetOperatora [znak] <= priorytetOperatora [stos.top()]) { // priotytet jest niższy
-					wyjscie += stos.pop(); // zrzucaj ze stosu aż będzie
+					wyjscie += stos.pop(); // zrzucaj ze stosu aż priorytet będzie wyższy
 					wyjscie += " ";
 				}
 				stos.push (znak);
@@ -63,8 +63,12 @@ int main (int argc, char *argv[]) {
 	}
 	
 	while (stos.size() > 0) {
-		wyjscie += " ";
+		wyjscie += "x";
 		wyjscie += stos.pop();
+	}
+	
+	if (wyjscie[wyjscie.size() - 1] == ' ') {
+		wyjscie = wyjscie.substr (0, wyjscie.size() - 1);
 	}
 	
 	cout << wyjscie << endl;

@@ -17,7 +17,7 @@ int main (int argc, char *argv[]) {
 	
 	Stack<int, ROZMIAR>* stos = new Stack<int, ROZMIAR>;
 	
-	for (;operacje >= 0; operacje--) { // czytaj aż skończy się wejście
+	for (;operacje > 0; operacje--) { // czytaj aż skończy się wejście
 		
 		cin >> wejscie_char;
 		
@@ -25,9 +25,6 @@ int main (int argc, char *argv[]) {
 			if (stos->size() < ROZMIAR) {
 				cin >> wejscie_int;
 				stos->push (wejscie_int);
-				cout << "ADD " << wejscie_int << endl;
-			} else {
-				cout << "FULL" << endl;
 			}
 		} else if (wejscie_char == 'D') { // zdejmij ze stosu
 			if (!stos->empty())
