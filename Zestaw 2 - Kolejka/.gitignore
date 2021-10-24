@@ -1,0 +1,5 @@
+*.o
+*.x
+*.exe
+*.exe.stackdump
+Pegaz
