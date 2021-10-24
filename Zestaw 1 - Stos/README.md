@@ -2,7 +2,7 @@
 
 ## Stos
 
-> Stos (ang. stack) to podstawowa struktura danych (abstrakcyjny typ danych), która implementuje zbiory dynamiczne. Elementy sa usuwane ze stosu w kolejnosci od najpózniej dodanego (strategia last-in, first-out - LIFO).
+> Stos (ang. stack) to podstawowa struktura danych (abstrakcyjny typ danych), która implementuje zbiory dynamiczne. Elementy sa usuwane ze stosu w kolejnosci od najpóźniej dodanego (strategia last-in, first-out - LIFO).
 
 ### Interfejs
 
@@ -16,48 +16,47 @@ class Stack {
 };
 ```
 
-Operacje maja miec złozonosc O(1). Złozonosc obliczeniowa programów powinna byc optymalna dla danej implementacji.
+Operacje mają mieć złożoność O(1). Złożoność obliczeniowa programów powinna być optymalna dla danej implementacji.
 
-Wprzypadku wystapienia błędu niedomiaru lub przepełnienia operacje powinny wyrzucac wyjatek `std::out_of_range`.
+W przypadku wystapienia błędu niedomiaru lub przepełnienia operacje powinny wyrzucać wyjatek `std::out_of_range`.
 
 ### Uwagi
 
-Pliki źródłowe muszą mieć podaną nazwę, a programy wykonywalne musza mieć rozszerzenie .x.
+Pliki źródłowe muszą mieć podaną nazwę, a programy wykonywalne muszą mieć rozszerzenie .x.
 
 ## Implementacja tablicowa stosu (ArrayStack.hpp)
 
-Napisac implementację tablicowa stosu zgodnie z podanym interfejsem. Prosze nie uzywac klasy `std::vector`.
+Napisać implementację tablicową stosu zgodnie z podanym interfejsem. Proszę nie używać klasy `std::vector`.
 
-## Implementacja wskaznikowa stosu (LinkedStack.hpp)
+## Implementacja wskaźnikowa stosu (LinkedStack.hpp)
 
-Napisać implementację wskaznikowa stosu zgodnie z podanym interfejsem.
+Napisać implementację wskaźnikową stosu zgodnie z podanym interfejsem.
 
 ## Stos (Stack.cpp)
 
-Program Stack.x ma wczytac ze standardowego wejscia dane wg ponizszego formatu wygenerowane przez program opisany w zadaniu Generator. Wynik działania odpowiednich operacji na stosie wypisac na standardowe wyjscie. Stos przechowuje elementy typu int. Załozyc, ze na stosie moze sie naraz znajdowac maksymalnie 10⁶ elementów. Program musi przechodzic testy.
+Program `Stack.x` ma wczytać ze standardowego wejścia dane wg poniższego formatu wygenerowane przez program opisany w zadaniu Generator. Wynik działania odpowiednich operacji na stosie wypisać na standardowe wyjście. Stos przechowuje elementy typu int. Założyć, że na stosie moze sie naraz znajdowac maksymalnie 10⁶ elementów. Program musi przechodzic testy.
 
 ### Format danych:
 
-W pierwszej linii podana jest liczba n  10⁶ wskazujaca na liczbe operacji do
-wykonania oraz n linii polecen. Operacje moga byc nastepujacego typu:
-- A x - połóz na stos lub wstaw do kolejki liczbe 0  x  10⁶
-- D - zdejmij/pobierz element z stosu/kolejki i gowypisz, jesli stos/kolejka jest pustawypisz “EMPTY”
-- S - wypisz liczbe elementów na stosie lub w kolejce
+W pierwszej linii podana jest liczba n ≤ 10⁶ wskazująca na liczbę operacji do wykonania oraz n linii poleceń. Operacje mogą być następujacego typu:
+- A x - połóż na stos lub wstaw do kolejki liczbe 0 ≤ x ≤ 10⁶
+- D - zdejmij/pobierz element z stosu/kolejki i go wypisz, jesśli stos/kolejka jest pusta wypisz "EMPTY"
+- S - wypisz liczbę elementów na stosie lub w kolejce
 
-> Uwaga: Programy musza wczytywac dane wejsciowe ze standardowego wejscia i wypisac rezultat na standardowe wyjscie.
+> Uwaga: Programy muszą wczytywać dane wejściowe ze standardowego wejścia i wypisać rezultat na standardowe wyjście.
 
 ## Generator (Generator.cpp)
-Napisac program Generator.x, który generuje dane wejsciowe dla programu Stack.x. Dane powinny byc generowane losowo (inne przy kazdym uruchomieniu) i musza byc zgodne z powyzszym formatem.
+Napisać program `Generator.x`, który generuje dane wejściowe dla programu `Stack.x`. Dane powinny być generowane losowo (inne przy każdym uruchomieniu) i muszą być zgodne z powyższym formatem.
 
 ## Odwrotna notacja polska (ONP.cpp)
 
-Napisz program, który za pomoca stosu zamienia wyrazenie arytmetyczne w zapisie klasycznym na odwrotna notacje polska.
+Napisz program, który za pomoca stosu zamienia wyrażenie arytmetyczne w zapisie klasycznym na odwrotną notacje polską.
 
-- W wyrazeniu wystepuja jedynie nawiasy okragłe ( ), operatory binarne + - * / i dodatnie liczby całkowite. Kazdy z w.w. elementów jest oddzielony spacja.
-- Kazdewyrazenie ma składnie nawias_otwierajacy lewy_argument operator prawy_argument nawias_zamykajacy. Kazda z operacji wraz z argumentami objeta jest nawiasem, w zwiazku z czym mozna pominac kolejnosc wykonywania działan.
+- W wyrażeniu wystepują jedynie nawiasy okragłe ( ), operatory binarne + - * / i dodatnie liczby całkowite. Każdy z w.w. elementów jest oddzielony spacja.
+- Każde wyrażenie ma składnie nawias_otwierajacy lewy_argument operator prawy_argument nawias_zamykajacy. Każda z operacji wraz z argumentami objęta jest nawiasem, w związku z czym można pominąć kolejność wykonywania działań.
 
-Przykładowe dane wejsciowe i wyjsciowe:
-```
+Przykładowe dane wejściowe i wyjściowe:
+```text
 ( 11 + ( ( ( ( 1 + 2 ) * ( 4 - 3 ) ) + ( 4 / 2 ) ) * ( 8 - 6 ) ) )
 
 11 1 2 + 4 3 - * 4 2 / + 8 6 - * +
@@ -66,19 +65,18 @@ Przykładowe dane wejsciowe i wyjsciowe:
 ## Pytania
 
 - Omów przykłady zastosowania stosu?
-- Dlaczego operacja pop() z std::stack nie zwraca wartosci elementu?
+- Dlaczego operacja pop() z std::stack nie zwraca wartości elementu?
 - Dlaczego operacja pop() z std::stack nie zwraca referencji do elementu?
 
 ## Dodatkowe punkty
 
-Dodatkowe punkty (po 1 pkt) mozna zdobyc za:
+Dodatkowe punkty (po 1 pkt) można zdobyć za:
 
 - Napisanie szablonu klas
-- Wykorzystanie referencji do r-wartosci, semantyki przenoszenia, uniwersalnych referencji, doskonałego
-przekazywanie.
+- Wykorzystanie referencji do r-wartości, semantyki przenoszenia, uniwersalnych referencji, doskonałego przekazywania.
 - Napisanie testera
 
-Napisac szablon klas wg ponizszego schematu, który implementuje stos przechowujacy obiekty typu T w oparciu o tablice o rozmiarze N.
+Napisać szablon klas wg poniższego schematu, który implementuje stos przechowujacy obiekty typu T w oparciu o tablice o rozmiarze N.
 
 ```cpp
 template<class T, int N>
