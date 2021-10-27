@@ -8,13 +8,14 @@
 
 ```cpp
 class Queue {
-	Queue(); // Konstruktor domyslny
-	void push(int x); // Wstawia element x do kolejki (takze enqueue)
-	int pop(); // Usuwa element z kolejki i zwraca jego wartosc (dequeue)
-	int size(); // Zwraca liczbe elementów w kolejce
-	bool empty(); // Sprawdza czy kolejka jest pusta
+    Queue(); // Konstruktor domyslny
+    void push(int x); // Wstawia element x do kolejki (takze enqueue)
+    int pop(); // Usuwa element z kolejki i zwraca jego wartosc (dequeue)
+    int size(); // Zwraca liczbe elementów w kolejce
+    bool empty(); // Sprawdza czy kolejka jest pusta
 };
 ```
+
 ### Uwagi
 
 Operacje maja miec złozonosc O(1). Złozonosc obliczeniowa programów powinna byc optymalna dla danej implementacji.
@@ -48,11 +49,11 @@ wykonania oraz n linii polecen. Operacje moga byc nastepujacego typu:
 
 ## Zadanie 4. Sortowanie pozycyjne (Radix.cpp)
 
-Zaimplementuj algorytm sortowania pozycyjnego przy uzyciu (tablicy) dziesieciu kolejek. Nalezy uzyc własnej implementacji kolejki. Napisac funkcje void radix(std::vector<int>& v), która sortuje wektor v. Załozyc, ze liczby sa nieujemne i mniejsze od 109. Funkcja main wczytuje dane do wektora std::vector<int> (patrz wskazówki w Materiałach), wywołuje funkcje radix i wypisuje elementy posortowanego wektora przy uzyciu petli for-each:
+Zaimplementuj algorytm sortowania pozycyjnego przy uzyciu (tablicy) dziesieciu kolejek. Nalezy uzyc własnej implementacji kolejki. Napisac funkcje `void radix(std::vector<int>& v)`, która sortuje wektor v. Załozyc, ze liczby sa nieujemne i mniejsze od 109. Funkcja main wczytuje dane do wektora `std::vector<int>` (patrz wskazówki w Materiałach), wywołuje funkcje radix i wypisuje elementy posortowanego wektora przy uzyciu petli for-each:
 
 ```cpp
 for(const auto& i : v)
-	std::cout << i << std::endl;
+    std::cout << i << std::endl;
 ```
 
 ## Pytania

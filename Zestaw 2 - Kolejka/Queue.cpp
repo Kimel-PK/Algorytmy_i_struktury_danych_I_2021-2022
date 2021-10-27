@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "LinkedQueue.hpp"
+#include "ArrayQueue.hpp"
 
 #define ROZMIAR 1000000
 
