@@ -3,20 +3,24 @@
 #include <math.h>
 #include "ArrayQueue.hpp"
 
+#define ROZMIAR 1000000
+
 using namespace std;
 
 void radix(vector<int>& v) {
 	
-	Queue<int, 110> kolejki[10];
+	Queue<int, ROZMIAR> kolejki[10];
+	bool koniec = false;
 	
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; !koniec; i++) {
 		
 		for (vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
-			
 			int liczba = *it;
 			kolejki[(liczba / (int)pow (10, i)) % 10].push(liczba);
-			
 		}
+		
+		if (kolejki[0].size() == (int)v.size())
+			koniec = true;
 		
 		v.clear();
 		
@@ -35,22 +39,9 @@ int main () {
 	int liczba;
 	vector<int> v;
 	
-	v.push_back (61);
-	v.push_back (91);
-	v.push_back (655);
-	v.push_back (53);
-	v.push_back (5);
-	v.push_back (64);
-	v.push_back (519);
-	v.push_back (123);
-	v.push_back (1);
-	v.push_back (741);
-	
-	/*
 	while (cin >> liczba) {
 		v.push_back(liczba);
 	}
-	*/
 	
 	radix (v);
 	

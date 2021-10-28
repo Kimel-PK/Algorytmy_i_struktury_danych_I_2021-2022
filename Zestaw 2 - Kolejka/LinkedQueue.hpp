@@ -24,7 +24,8 @@ class Queue {
 		}
 		
 		Node* temp = new Node;
-		ostatni->wskaznik = temp;
+		if (dlugosc > 0)
+			ostatni->wskaznik = temp;
 		temp->wartosc = x;
 		ostatni = temp;
 		

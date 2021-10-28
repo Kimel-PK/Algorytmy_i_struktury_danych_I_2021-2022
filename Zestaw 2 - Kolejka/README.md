@@ -2,7 +2,7 @@
 
 ## Kolejka
 
-> Kolejka (ang. queue) to nastepna podstawowa struktura danych, która implementuje zbiory dynamiczne. Elementy sa usuwane z kolejki w kolejnosci od najwczesniej dodanego (strategia first-in, first-out - FIFO).
+> Kolejka (ang. queue) to nastepna podstawowa struktura danych, która implementuje zbiory dynamiczne. Elementy są usuwane z kolejki w kolejności od najwcześniej dodanego (strategia first-in, first-out - FIFO).
 
 ## Interfejs
 
@@ -18,38 +18,38 @@ class Queue {
 
 ### Uwagi
 
-Operacje maja miec złozonosc O(1). Złozonosc obliczeniowa programów powinna byc optymalna dla danej implementacji.
+Operacje mają mieć złożoność O(1). Złożoność obliczeniowa programów powinna być optymalna dla danej implementacji.
 
-W przypadku wystapienia błedu niedomiaru lub przepełnienia operacje powinny wyrzucac wyjatek `std::out_of_range`.
+W przypadku wystapienia błedu niedomiaru lub przepełnienia operacje powinny wyrzucac wyjątek `std::out_of_range`.
 
-Dla prostoty, cała implementacja klasy moze znajdowac sie w jednym pliku nagłówkowym. Taka konstrukcja jest konieczna w przypadku szablonów klas. Pliki zródłowe musza miec podana nazwe, a programy wykonywalne musza miec rozszerzenie .x.
+Dla prostoty, cała implementacja klasy może znajdować się w jednym pliku nagłówkowym. Taka konstrukcja jest konieczna w przypadku szablonów klas. Pliki źródłowe muszą mieć podaną nazwę, a programy wykonywalne muszą mieć rozszerzenie `.x`.
 
 ## Zadanie 1. Implementacja tablicowa kolejki (ArrayQueue.hpp)
 
-Napisac klase Queue, która implementuje kolejke w oparciu o bufor cykliczny. Dodac konstruktor, który jako argument przyjmuje rozmiar tablicy. Nie uzywac klasy `std::vector`.
+Napisać klasę `Queue`, która implementuje kolejkę w oparciu o bufor cykliczny. Dodać konstruktor, który jako argument przyjmuje rozmiar tablicy. Nie używać klasy `std::vector`.
 
-## Zadanie 2. Implementacja wskaznikowa kolejki (LinkedQueue.hpp)
+## Zadanie 2. Implementacja wskaźnikowa kolejki (LinkedQueue.hpp)
 
-Napisac implementacje wskaznikowa kolejki.
+Napisać implementację wskaźnikową kolejki.
 
 ## Zadanie 3. Kolejka (Queue.cpp)
 
-Program Queue.x ma wczytac ze standardowego wejscia dane wg ponizszego formatu wygenerowane przez program opisany w zadaniu Generator z Zestawu 1. Wynik działania odpowiednich operacji na kolejce wypisac na standardowe wyjscie. Kolejka przechowuje elementy typu int.
+Program `Queue.x` ma wczytać ze standardowego wejścia dane wg poniższego formatu wygenerowane przez program opisany w zadaniu Generator z Zestawu 1. Wynik działania odpowiednich operacji na kolejce wypisać na standardowe wyjście. Kolejka przechowuje elementy typu int.
 
 ### Format danych
 
-W pierwszej linii podana jest liczba n  106 wskazujaca na liczbe operacji do
+W pierwszej linii podana jest liczba n ≤ 10⁶ wskazujaca na liczbe operacji do
 wykonania oraz n linii polecen. Operacje moga byc nastepujacego typu:
 
-- A x - wstaw do kolejki liczbe 0  x  106
-- D - pobierz element z kolejki i go wypisz, jesli kolejka jest pusta wypisz “EMPTY”
+- A x - wstaw do kolejki liczbe 0 ≤ x ≤ 10⁶
+- D - pobierz element z kolejki i go wypisz, jeśli kolejka jest pusta wypisz "EMPTY"
 - S - wypisz liczbe elementów w kolejce
 
-> Uwaga: Programy musza wczytywac dane wejsciowe ze standardowego wejscia i wypisac rezultat na standardowe wyjscie.
+> Uwaga: Programy muszą wczytywać dane wejściowe ze standardowego wejścia i wypisać rezultat na standardowe wyjście.
 
 ## Zadanie 4. Sortowanie pozycyjne (Radix.cpp)
 
-Zaimplementuj algorytm sortowania pozycyjnego przy uzyciu (tablicy) dziesieciu kolejek. Nalezy uzyc własnej implementacji kolejki. Napisac funkcje `void radix(std::vector<int>& v)`, która sortuje wektor v. Załozyc, ze liczby sa nieujemne i mniejsze od 109. Funkcja main wczytuje dane do wektora `std::vector<int>` (patrz wskazówki w Materiałach), wywołuje funkcje radix i wypisuje elementy posortowanego wektora przy uzyciu petli for-each:
+Zaimplementuj algorytm sortowania pozycyjnego przy użyciu (tablicy) dziesieciu kolejek. Należy użyć własnej implementacji kolejki. Napisać funkcję `void radix(std::vector<int>& v)`, która sortuje wektor v. Założyć, że liczby sa nieujemne i mniejsze od 10⁹. Funkcja `main` wczytuje dane do wektora `std::vector<int>`, wywołuje funkcje radix i wypisuje elementy posortowanego wektora przy użyciu pętli `for-each`:
 
 ```cpp
 for(const auto& i : v)
@@ -59,13 +59,13 @@ for(const auto& i : v)
 ## Pytania
 
 - Opisz trzy sposoby obsługi cyklicznosci bufora.
-- Omów przykłady zastosowania kolejki?
+- Omów przykłady zastosowania kolejki.
 - Co oznaczaja akronimy LIFO i FIFO?
 
 ## Dodatkowe punkty
 
-Dodatkowe punkty (po 1 pkt) mozna zdobyc za:
+Dodatkowe punkty (po 1 pkt) można zdobyć za:
 
 - Napisanie szablonu klas
-- Wykorzystanie referencji do r-wartosci, semantyki przenoszenia, uniwersalnych referencji, doskonałego przekazywanie.
+- Wykorzystanie referencji do r-wartości, semantyki przenoszenia, uniwersalnych referencji, doskonałego przekazywania.
 - Napisanie testera
