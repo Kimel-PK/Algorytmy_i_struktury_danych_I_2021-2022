@@ -44,7 +44,7 @@ W pierwszej linii podana jest liczba n ≤ 10³ wskazującą na liczbę operacji
 - f - usuń z listy pierwszy element i go wypisz, jeśli lista jest pusta wypisz “EMPTY”
 - b - usuń z listy ostatni element i go wypisz, jeśli lista jest pusta wypisz “EMPTY”
 - R x y - jeżeli x nie jest obecny w liście wypisz FALSE, w przeciwnym razie zastąp pierwsze
-wystąpienie wartości xprzez yi wypisz TRUE (ang. replace)
+wystąpienie wartości x przez y i wypisz TRUE (ang. replace)
 - S - wypisz rozmiar listy
 
 Lista powinna przechowywać elementy typu int. Należy obsłużyć ewentualne błędy (wyjątki). Maksymalnie naraz w liście może znajdować się do 10³ elementów.

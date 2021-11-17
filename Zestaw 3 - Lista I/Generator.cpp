@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define OPERACJE 1000000
+#define OPERACJE 1000
 
 using namespace std;
 
@@ -11,19 +11,28 @@ int main () {
     srand(time(NULL)); // ustawiamy ziarno generatora losowego
     
     int n = rand() % OPERACJE; // losujemy ilość operacji
-    cout << n << endl; // pierwszy wiersz to ilośc operacji
+    cout << n << endl; // pierwszy wiersz to ilość operacji
     
     for (int i = 0; i < n; i++) { // wypisujemy OPERACJE losowych danych w podanym formacie
-        switch (rand() % 3) {
+        switch (rand() % 6) {
             case 0:
-                cout << "A" << " " << rand() % 1000000 << endl; // wstaw na stos wartość X
+                cout << "F" << " " << rand() % 1000 << endl; // wstaw x na początek listy
                 break;
 			case 1:
-				cout << "D" << endl; // zdejmij ze stosu
+				cout << "B" << " " << rand() % 1000 << endl; // wstaw x na koniec listy
 				break;
 			case 2:
-				cout << "S" << endl; // wypisz ilość elementów stosu
+				cout << "f" << endl; // usuń z listy pierwszy element i wypisz go
 				break;
+            case 3:
+                cout << "b" << endl; // usuń z listy ostatni element i wypisz go
+                break;
+            case 4:
+                cout << "R" << " " << rand() % 1000 << " " << rand() % 1000 << endl; // zastąp element x przez element y
+                break;
+            case 5:
+                cout << "S" << endl; // wypisz rozmiar listy
+                break;
         }
     }
     
