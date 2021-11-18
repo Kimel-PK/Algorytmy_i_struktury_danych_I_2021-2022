@@ -23,12 +23,12 @@ class List {
 	}
 	
 	void push_front (T x) { // Dołącza element na początek listy
-	
+		
 		Node* temp = new Node();
 		temp->value = x;
 		
 		temp->next = guard->next;
-		temp->prev = guard->next;
+		temp->prev = guard;
 		guard->next->prev = temp;
 		guard->next = temp;
 		_size++;
@@ -55,7 +55,7 @@ class List {
 		temp->value = x;
 		
 		temp->prev = guard->prev;
-		temp->next = guard->next;
+		temp->next = guard;
 		guard->prev->next = temp;
 		guard->prev = temp;
 		_size++;
@@ -88,20 +88,20 @@ class List {
 	}
 	
 	void clear() { // Czyści listę
-		while (guard->next != guard->prev) {
+		while (guard->next != guard) {
 			pop_front();
 		}
 	}
 	
 	int find(T x) { // Zwraca pozycję pierwszego elementu o wartości x
 		
-		Node* search = guard->next;
+		Node* search = guard;
 		
 		for (int i = 0; i < size(); i++) {
+			search = search->next;
 			if (search->value == x) {
 				return i;
 			}
-			search = search->next;
 		}
 		
 		return -1;
@@ -138,7 +138,7 @@ class List {
 		}
 		
 		temp->next = insert->next;
-		temp->prev = insert->next;
+		temp->prev = insert;
 		insert->next->prev = temp;
 		insert->next = temp;
 		_size++;
@@ -173,11 +173,17 @@ class List {
 	void WypiszListe () {
 		std::cout << "Wypisz liste" << std::endl;
 		std::cout << "Rozmiar: " << _size << std::endl;
-		Node* temp = guard->next;
-		for (int i = 0; i < _size; i++) {
-			std::cout << temp->value << std::endl;
+		Node* temp = guard;
+		for (int i = 0; i <= _size; i++) {
+			std::cout << "(";
+			std::cout << temp->prev << " <<";
+			std::cout << temp << ">> ";
+			std::cout << temp->next;
+			std::cout << ")";
+			std::cout << std::endl;
 			temp = temp->next;
 		}
+		std::cout << std::endl << "Koniec wypisz liste" << std::endl;
 	}
 	
 	private:
