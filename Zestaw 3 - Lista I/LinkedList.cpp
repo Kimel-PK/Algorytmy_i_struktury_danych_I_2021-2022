@@ -31,17 +31,17 @@ int main (int argc, char *argv[]) {
 			if (lista.size() < ROZMIAR) {
 				lista.push_back (wejscie_int);
 			}
-		} else if (wejscie_char == 'f') {
+		} else if (wejscie_char == 'f') { // usuń z początku listy
 			if (lista.size() > 0)
 				cout << lista.pop_front() << endl;
 			else
 				cout << "EMPTY" << endl;
-		} else if (wejscie_char == 'b') {
+		} else if (wejscie_char == 'b') { // usuń z końca listy
 			if (lista.size() > 0)
 				cout << lista.pop_back() << endl;
 			else
 				cout << "EMPTY" << endl;
-		} else if (wejscie_char == 'R') {
+		} else if (wejscie_char == 'R') { // znajdź i zamień element
 			cin >> wejscie_int;
 			int dana;
 			cin >> dana;

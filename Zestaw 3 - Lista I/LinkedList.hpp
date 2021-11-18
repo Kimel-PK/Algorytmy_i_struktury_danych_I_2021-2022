@@ -159,7 +159,7 @@ class List {
 		
 	}
 	
-	bool replace(T x, T y) {
+	bool replace(T x, T y) { // zastępuje pierwsze wystąpienie elementu x elementem y
 		
 		int i = find (x);
 		if (i == -1)
@@ -168,22 +168,6 @@ class List {
 		insert (i, y);
 		
 		return true;
-	}
-	
-	void WypiszListe () {
-		std::cout << "Wypisz liste" << std::endl;
-		std::cout << "Rozmiar: " << _size << std::endl;
-		Node* temp = guard;
-		for (int i = 0; i <= _size; i++) {
-			std::cout << "(";
-			std::cout << temp->prev << " <<";
-			std::cout << temp << ">> ";
-			std::cout << temp->next;
-			std::cout << ")";
-			std::cout << std::endl;
-			temp = temp->next;
-		}
-		std::cout << std::endl << "Koniec wypisz liste" << std::endl;
 	}
 	
 	private:
