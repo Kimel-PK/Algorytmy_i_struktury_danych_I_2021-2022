@@ -8,6 +8,8 @@ using namespace std;
 
 int main (int argc, char *argv[]) {
 	
+	/*
+	
 	CursorList<ROZMIAR> lista = CursorList<ROZMIAR>();
 	
 	lista.push_front (1);
@@ -19,7 +21,7 @@ int main (int argc, char *argv[]) {
 	
 	lista.WypiszListe();
 	
-	/*
+	*/
 	
 	char wejscie_char;
 	int wejscie_int;
@@ -68,7 +70,5 @@ int main (int argc, char *argv[]) {
 		}
 		
 	}
-	
-	*/
 	
 }

@@ -39,7 +39,6 @@ class CursorList {
 		}
 		
 		_size++;
-		
 	}
 	
 	int pop_front() { // Usuwa i zwraca element z początku listy
@@ -51,7 +50,6 @@ class CursorList {
 		
 		_size--;
 		return nodes[temp].value;
-		
 	}
 	
 	void push_back(int x) { // Dołącza element na koniec listy
@@ -71,7 +69,6 @@ class CursorList {
 		}
 		
 		_size++;
-		
 	}
 	
 	int pop_back() { // Usuwa i zwraca element z końca listy
@@ -87,7 +84,6 @@ class CursorList {
 		
 		_size--;
 		return nodes[spare].value;
-		
 	}
 	
 	int size() { // Zwraca liczbę elementów w liście
@@ -150,16 +146,33 @@ class CursorList {
 	
 	int remove(int x) { // Usuwa wystąpienia x i zwraca ich liczbę
 		
+		int count = 0;
 		
+		int temp = head;
+		for (int i = 0; i < size() - 1; i++) {
+			
+			temp = nodes[temp].next;
+			if (nodes[nodes[temp].next].value != x)
+				continue;
+			
+			int spare_old = spare;
+			spare = nodes[temp].next;
+			nodes[temp].next = nodes[nodes[temp].next].next;
+			nodes[spare].next = spare_old;
+			
+			_size--;
+			i--;
+			count++;
+		}
 		
-		return 0;
+		return count;
 	}
 	
 	bool replace (int x, int y) { // zamienia pierwsze wystąpienie elementu x na element y
 		
 		int search = find(x);
 		if (search != -1) {
-			nodes[search] = y;
+			nodes[search].value = y;
 			return true;
 		}
 		
