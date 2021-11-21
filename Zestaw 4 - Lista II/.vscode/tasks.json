@@ -1,0 +1,47 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Lista tablicowa",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "ArrayList.exe", "ArrayList.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Lista kursorowa",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "CursorList.exe", "CursorList.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Generator",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "Generator.exe", "Generator.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Kopiuj rozwiązanie",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"command": "rm ./Pegaz/*.cpp; rm ./Pegaz/*.hpp; rm ./Pegaz/Makefile; cp *.cpp ./Pegaz/; cp *.hpp ./Pegaz/; cp Makefile ./Pegaz/",
+			"group": {
+			  "kind": "build",
+			  "isDefault": true
+			}
+		  }
+	]
+}
