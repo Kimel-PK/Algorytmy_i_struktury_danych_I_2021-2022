@@ -9,7 +9,7 @@ class ArrayList {
 	
 	void push_front(int x) { // Dołącza element na początek listy
 		if (size() == capacity)
-			return;
+			throw std::out_of_range("Add to full list");
 		
 		rewrite(0, 1);
 		array[0] = x;
@@ -17,7 +17,7 @@ class ArrayList {
 	
     int pop_front() { // Usuwa i zwraca element z początku listy
 		if (empty())
-			return -1;
+			throw std::out_of_range("Pop from empty list");
 		
 		int result = array[0];
 		
@@ -27,12 +27,15 @@ class ArrayList {
 	
     void push_back(int x) { // Dołącza element na koniec listy
 		if (size() == capacity)
-			return;
+			throw std::out_of_range("Add to full list");
 		
 		array[_size++] = x;
 	}
 	
     int pop_back() { // Usuwa i zwraca element z końca listy
+		if (empty())
+			throw std::out_of_range("Pop from empty list");
+		
 		return array[--_size];
 	}
 	
@@ -61,6 +64,9 @@ class ArrayList {
 	
     int erase(int i) { // Usuwa i zwraca element na pozycji i
 		
+		if (empty())
+			throw std::out_of_range("Erase from empty list");
+		
 		int result = array[i];
 		rewrite(i, -1);
 		
@@ -70,7 +76,7 @@ class ArrayList {
     void insert(int i, int x) { // Wstawia element x przed pozycję i
 		
 		if (size() + 1 >= capacity)
-			return;
+			throw std::out_of_range("Insert to full list");
 		
 		rewrite (i, 1);
 		array[i] = x;
@@ -109,10 +115,12 @@ class ArrayList {
 		return false;
 	}
 	
+	private:
+	
 	void rewrite (int hole, int hole_size) { // przepisuje tablicę wstawiając do środka dziurę lub usuwającą dany element
 		
-		if (size() + hole_size > capacity || hole + hole_size < 0 || hole + hole_size > capacity)
-			return;
+		if (size() + hole_size > capacity)
+			throw std::out_of_range("Out of array bounds while rewriting list");
 		
 		if (hole_size > 0) {
 			for (int i = size() - 1 + hole_size; i > hole; i--) {
@@ -128,14 +136,7 @@ class ArrayList {
 		
 	}
 	
-	void WypiszListe () {
-		for (int i = 0; i < size(); i++)
-			std::cout << array[i] << std::endl;
-	}
-	
-	private:
-	
 	int array[capacity];
-	int _size; // Rozmiar listy
+	int _size; // ilość elementów w liście
 	
 };
