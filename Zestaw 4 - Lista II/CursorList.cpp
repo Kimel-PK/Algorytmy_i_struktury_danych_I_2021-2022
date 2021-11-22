@@ -8,20 +8,43 @@ using namespace std;
 
 int main (int argc, char *argv[]) {
 	
-	/*
+	// /*
 	
 	CursorList<ROZMIAR> lista = CursorList<ROZMIAR>();
 	
+	lista.push_front (627);
+	lista.push_front (993);
+	lista.pop_back ();
+	lista.pop_back ();
 	lista.push_front (1);
-	lista.push_front (2);
-	lista.push_back (3);
-	lista.push_back (7);
-	
-	cout << "erase: " << lista.erase (2) << endl;
+	lista.push_back (627);
+	lista.pop_front ();
+	lista.pop_front ();
+	lista.push_front (67);
+	lista.push_front (69);
+	lista.push_back (63);
+	lista.push_back (65);
+	lista.push_back (60);
+	cout << "szukaj: " << lista.find (69) << endl;
+	lista.insert (0, 96);
+	// lista.replace (69, 96);
+	// lista.pop_front();
+	// lista.push_back (240);
+	// lista.pop_back ();
+	// lista.pop_front();
+	// lista.push_front (480);
+	// lista.pop_back ();
+	// lista.replace (100, 324);
+	// lista.replace (90, 224);
+	// lista.replace (381, 558);
+	// lista.replace (953, 797);
+	// lista.push_front (117);
+	// lista.replace (320, 24);
+	// lista.push_back (197);
 	
 	lista.WypiszListe();
 	
-	*/
+	/*
 	
 	char wejscie_char;
 	int wejscie_int;
@@ -74,5 +97,7 @@ int main (int argc, char *argv[]) {
 		i++;
 		
 	}
+	
+	*/
 	
 }

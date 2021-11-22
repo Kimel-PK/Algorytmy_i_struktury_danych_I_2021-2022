@@ -125,7 +125,6 @@ class CursorList {
 		
 		
 		_size++;
-		return nodes[spare].value;
 	}
 	
 	int remove(int x) { // Usuwa wystąpienia x i zwraca ich liczbę
