@@ -122,7 +122,17 @@ class CursorList {
 			temp = nodes[temp].next;
 		}
 		
+		int new_node = spare;
+		spare = nodes[spare].next;
+		nodes[new_node].value = x;
 		
+		if (i == 0) {
+			nodes[new_node].next = head;
+			head = new_node;
+		} else {
+			nodes[new_node].next = nodes[temp].next;
+			nodes[temp].next = new_node;
+		}
 		
 		_size++;
 	}
@@ -153,10 +163,13 @@ class CursorList {
 	
 	bool replace (int x, int y) { // zamienia pierwsze wystąpienie elementu x na element y
 		
-		int search = find(x);
-		if (search != -1) {
-			nodes[search].value = y;
-			return true;
+		int search = head;
+		for (int i = 0; i < size(); i++) {
+			if (nodes[search].value == x) {
+				nodes[search].value = y;
+				return true;
+			}
+			search = nodes[search].next;
 		}
 		
 		return false;
