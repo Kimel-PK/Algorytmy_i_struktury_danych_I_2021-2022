@@ -3,28 +3,37 @@ class ArrayList {
 	
 	public:
 	
+	ArrayList () {
+		_size = 0;
+	}
+	
 	void push_front(int x) { // Dołącza element na początek listy
 		if (size() == capacity)
 			return;
-			
+		
 		rewrite(0, 1);
 		array[0] = x;
 	}
 	
     int pop_front() { // Usuwa i zwraca element z początku listy
+		if (empty())
+			return -1;
 		
-		return -1;
+		int result = array[0];
+		
+		rewrite (0, -1);
+		return result;
 	}
 	
     void push_back(int x) { // Dołącza element na koniec listy
 		if (size() == capacity)
 			return;
 		
-		array[_size] = x;
+		array[_size++] = x;
 	}
 	
     int pop_back() { // Usuwa i zwraca element z końca listy
-		return array[_size--];
+		return array[--_size];
 	}
 	
     int size() { // Zwraca liczbę elementów w liście
@@ -42,28 +51,86 @@ class ArrayList {
 	}
 	
     int find(int x) { // Zwraca pozycję pierwszego elementu o wartości x
+		
+		for (int i = 0; i < size(); i++)
+			if (array[i] == x)
+				return i;
+		
 		return -1;
 	}
 	
     int erase(int i) { // Usuwa i zwraca element na pozycji i
-		return -1;
+		
+		int result = array[i];
+		rewrite(i, -1);
+		
+		return result;
 	}
 	
     void insert(int i, int x) { // Wstawia element x przed pozycję i
+		
+		if (size() + 1 >= capacity)
+			return;
+		
 		rewrite (i, 1);
 		array[i] = x;
 	}
 	
     int remove(int x) { // Usuwa wystąpienia x i zwraca ich liczbę
-		return -1;
+		
+		int count = 0;
+		
+		for (int i = 0; i < size(); i++) {
+			
+			if (count != 0) {
+				array[i - count] = array[i];
+			}
+			
+			if (array[i] == x) {
+				count++;
+			}
+			
+		}
+		
+		_size = _size - count;
+		
+		return count;
 	}
 	
 	bool replace (int x, int y) { // zamienia pierwsze wystąpienie elementu x na element y
+		
+		int search = find (x);
+		
+		if (search != -1) {
+			array[search] = y;
+			return true;
+		}
+		
 		return false;
 	}
 	
-	void rewrite (int hole, int hole_size) {
+	void rewrite (int hole, int hole_size) { // przepisuje tablicę wstawiając do środka dziurę lub usuwającą dany element
 		
+		if (size() + hole_size > capacity || hole + hole_size < 0 || hole + hole_size > capacity)
+			return;
+		
+		if (hole_size > 0) {
+			for (int i = size() - 1 + hole_size; i > hole; i--) {
+				array[i] = array[i - hole_size];
+			}
+		} else {
+			for (int i = hole; i < size() + hole_size; i++) {
+				array[i] = array[i - hole_size];
+			}
+		}
+		
+		_size += hole_size;
+		
+	}
+	
+	void WypiszListe () {
+		for (int i = 0; i < size(); i++)
+			std::cout << array[i] << std::endl;
 	}
 	
 	private:
