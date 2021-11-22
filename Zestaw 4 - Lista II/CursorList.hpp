@@ -24,19 +24,11 @@ class CursorList {
 		if (size() == capacity)
 			return;
 		
-		if (head == -1) {
-			head = spare;
-			nodes[head].value = x;
-			spare = nodes[spare].next;
-			nodes[head].next = -1;
-			tail = head;
-		} else {
-			int temp = head;
-			head = spare;
-			nodes[head].value = x;
-			spare = nodes[spare].next;
-			nodes[head].next = temp;
-		}
+		int temp = head;
+		head = spare;
+		nodes[head].value = x;
+		spare = nodes[spare].next;
+		nodes[head].next = temp;
 		
 		_size++;
 	}
@@ -54,19 +46,11 @@ class CursorList {
 	
 	void push_back(int x) { // Dołącza element na koniec listy
 	
-		if (head == -1) {
-			head = spare;
-			nodes[head].value = x;
-			spare = nodes[spare].next;
-			nodes[head].next = -1;
-			tail = head;
-		} else {
-			int temp = tail;
-			tail = spare;
-			nodes[tail].value = x;
-			spare = nodes[spare].next;
-			nodes[temp].next = tail;
-		}
+		int temp = tail;
+		tail = spare;
+		nodes[tail].value = x;
+		spare = nodes[spare].next;
+		nodes[temp].next = tail;
 		
 		_size++;
 	}
