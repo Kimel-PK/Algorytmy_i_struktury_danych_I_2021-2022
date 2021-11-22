@@ -8,44 +8,6 @@ using namespace std;
 
 int main (int argc, char *argv[]) {
 	
-	// /*
-	
-	CursorList<ROZMIAR> lista = CursorList<ROZMIAR>();
-	
-	lista.push_front (627);
-	lista.push_front (993);
-	lista.pop_back ();
-	lista.pop_back ();
-	lista.push_front (1);
-	lista.push_back (627);
-	lista.pop_front ();
-	lista.pop_front ();
-	lista.push_front (57);
-	lista.push_front (69);
-	lista.push_back (43);
-	lista.push_back (15);
-	lista.push_back (80);
-	lista.replace (69, 96);
-	lista.insert (0, 1);
-	lista.insert (5, 5);
-	// lista.pop_front();
-	// lista.push_back (240);
-	// lista.pop_back ();
-	// lista.pop_front();
-	// lista.push_front (480);
-	// lista.pop_back ();
-	// lista.replace (100, 324);
-	// lista.replace (90, 224);
-	// lista.replace (381, 558);
-	// lista.replace (953, 797);
-	// lista.push_front (117);
-	// lista.replace (320, 24);
-	// lista.push_back (197);
-	
-	lista.WypiszListe();
-	
-	/*
-	
 	char wejscie_char;
 	int wejscie_int;
 	int operacje;
@@ -97,7 +59,5 @@ int main (int argc, char *argv[]) {
 		i++;
 		
 	}
-	
-	*/
 	
 }

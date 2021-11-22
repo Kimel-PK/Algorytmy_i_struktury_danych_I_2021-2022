@@ -41,6 +41,8 @@ class CursorList {
 		spare = temp;
 		
 		_size--;
+		if (size() == 0)
+			head = spare;
 		return nodes[temp].value;
 	}
 	
