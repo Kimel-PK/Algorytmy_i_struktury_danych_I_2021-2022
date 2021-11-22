@@ -22,7 +22,7 @@ class CursorList {
 	
 	void push_front(int x) { // Dołącza element na początek listy
 		if (size() == capacity)
-			return;
+			throw std::out_of_range("Add to full list");
 		
 		int temp = head;
 		head = spare;
@@ -34,6 +34,8 @@ class CursorList {
 	}
 	
 	int pop_front() { // Usuwa i zwraca element z początku listy
+		if (empty())
+			throw std::out_of_range("Pop from empty list");
 		
 		int temp = head;
 		head = nodes[head].next;
@@ -47,7 +49,9 @@ class CursorList {
 	}
 	
 	void push_back(int x) { // Dołącza element na koniec listy
-	
+		if (size() == capacity)
+			throw std::out_of_range("Add to full list");
+		
 		int temp = tail;
 		tail = spare;
 		nodes[tail].value = x;
@@ -58,6 +62,8 @@ class CursorList {
 	}
 	
 	int pop_back() { // Usuwa i zwraca element z końca listy
+		if (empty())
+			throw std::out_of_range("Pop from empty list");
 		
 		int temp = head;
 		for (int i = 0; i < size() - 2; i++) {
@@ -101,6 +107,9 @@ class CursorList {
 	
 	int erase(int i) { // Usuwa i zwraca element na pozycji i
 		
+		if (empty())
+			throw std::out_of_range("Erase from empty list");
+		
 		int temp = head;
 		
 		for (; i > 1; i--) {
@@ -117,6 +126,9 @@ class CursorList {
 	}
 	
 	void insert(int i, int x) { // Wstawia element x przed pozycję i
+		
+		if (size() + 1 >= capacity)
+			throw std::out_of_range("Insert to full list");
 		
 		int temp = head;
 		
@@ -177,27 +189,6 @@ class CursorList {
 		return false;
 	}
 	
-	void WypiszListe () {
-		
-		std::cout << "head: " << head << std::endl;
-		std::cout << "tail: " << tail << std::endl;
-		std::cout << "size: " << _size << std::endl;
-		std::cout << "spare: " << spare << std::endl;
-		
-		int element = head;
-		for (int i = 0; i < size(); i++) {
-			std::cout << i << " (" << nodes[element].value << ")" << std::endl;
-			element = nodes[element].next;
-		}
-		
-		std::cout << "============================" << std::endl;
-		
-		for (int i = 0; i < size() + 5; i++) {
-			std::cout << i << " - (" << nodes[i].value << ") => " << nodes[i].next << std::endl;
-		}
-		
-	}
-	
 	private:
 	
 	Node nodes[capacity]; // Tablica węzłów
@@ -206,4 +197,5 @@ class CursorList {
 	int tail; // Indeks ostatniego węzła
 	int _size; // Rozmiar listy
 	int spare; // Indeks pierwszego nieużytego elementu tablicy
+	
 };

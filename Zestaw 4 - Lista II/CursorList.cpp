@@ -21,7 +21,6 @@ int main (int argc, char *argv[]) {
 	for (;operacje > 0; operacje--) { // czytaj aż skończy się wejście
 		
 		cin >> wejscie_char;
-		// cout << i << " - " << wejscie_char << endl;
 		
 		if (wejscie_char == 'F') { // wstaw na początek listy
 			cin >> wejscie_int;
