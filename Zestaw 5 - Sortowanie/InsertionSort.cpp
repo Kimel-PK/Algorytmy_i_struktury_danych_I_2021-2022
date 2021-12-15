@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <class T> void sort(std::vector<T>& v) {
+	
+	vector<T> v_sorted;
+	T temp;
+	
+	temp = v.back();
+	v.pop_back();
+	v_sorted.push_back (temp);
+	
+	while (v.size() != 0) {
+	    
+		temp = v.back();
+		v.pop_back();
+		
+		bool found = false;
+		for (int i = 0; i < (int)v_sorted.size() && !found; i++) {
+			if (temp < v_sorted[i]) {
+				
+				v_sorted.insert (v_sorted.begin() + i, temp);
+				found = true;
+			}
+		}
+		if (!found) {
+			v_sorted.push_back (temp);
+		}
+	}
+	
+	v = v_sorted;
+	
+}
+
+int main () {
+	
+	int wejscie_int;
+	vector<int> liczby;
+	
+	while (cin >> wejscie_int) { // czytaj aż skończy się wejście
+		liczby.push_back (wejscie_int);
+	}
+	
+	sort(liczby);
+	
+	for(const auto& i : liczby)
+		std::cout << i << std::endl;
+	
+}
