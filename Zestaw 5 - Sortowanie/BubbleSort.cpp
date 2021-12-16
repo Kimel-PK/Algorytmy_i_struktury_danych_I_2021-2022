@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
@@ -28,9 +29,16 @@ int main () {
 		liczby.push_back (wejscie_int);
 	}
 	
-	sort(liczby);
+	auto start = chrono::high_resolution_clock::now();
+	sort<int> (liczby);
+	auto end = chrono::high_resolution_clock::now();
 	
+	chrono::duration<double> elapsed = end - start;
+	cout << " " << elapsed.count() << endl;
+	
+	/*
 	for(const auto& i : liczby)
 		std::cout << i << std::endl;
+	*/
 	
 }
