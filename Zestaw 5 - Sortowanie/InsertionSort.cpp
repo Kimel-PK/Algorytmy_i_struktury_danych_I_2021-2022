@@ -6,6 +6,8 @@ using namespace std;
 
 template <class T> void sort(std::vector<T>& v) {
 	
+	int comparisons = 0;
+	
 	vector<T> v_sorted;
 	T temp;
 	
@@ -20,6 +22,7 @@ template <class T> void sort(std::vector<T>& v) {
 		
 		bool found = false;
 		for (int i = 0; i < (int)v_sorted.size() && !found; i++) {
+			comparisons++;
 			if (temp < v_sorted[i]) {
 				
 				v_sorted.insert (v_sorted.begin() + i, temp);
@@ -30,6 +33,8 @@ template <class T> void sort(std::vector<T>& v) {
 			v_sorted.push_back (temp);
 		}
 	}
+	
+	cerr << "Comparison operations: " << comparisons << endl;
 	
 	v = v_sorted;
 	
