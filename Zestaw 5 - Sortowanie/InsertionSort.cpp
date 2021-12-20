@@ -24,7 +24,6 @@ template <class T> void sort(std::vector<T>& v) {
 		for (int i = 0; i < (int)v_sorted.size() && !found; i++) {
 			comparisons++;
 			if (temp < v_sorted[i]) {
-				
 				v_sorted.insert (v_sorted.begin() + i, temp);
 				found = true;
 			}
