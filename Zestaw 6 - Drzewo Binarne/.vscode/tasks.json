@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Drzewo binarne",
+			"type": "shell",
+			"command": "g++",
+			"args": ["-std=c++11", "-Wall", "-o", "BinaryTree.exe", "BinaryTree.cpp"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Kopiuj rozwiązanie",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"command": "rm ./Pegaz/*.cpp; rm ./Pegaz/*.hpp; rm ./Pegaz/Makefile; cp *.cpp ./Pegaz/; cp *.hpp ./Pegaz/; cp Makefile ./Pegaz/",
+			"group": {
+			  "kind": "build",
+			  "isDefault": true
+			}
+		  }
+	]
+}
