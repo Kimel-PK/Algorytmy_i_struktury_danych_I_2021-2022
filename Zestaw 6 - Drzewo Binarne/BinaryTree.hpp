@@ -175,4 +175,18 @@ class BinaryTree {
 		_postorder (root);
 	}
 	
+	private:
+	void BinaryTreeDestructor (BinaryTreeNode* node) {
+		if (node != nullptr) {
+			BinaryTreeDestructor (node->left);
+			BinaryTreeDestructor (node->right);
+			delete node;
+		}
+	}
+	
+	public:
+	~BinaryTree () {
+		BinaryTreeDestructor (root);
+	}
+	
 };
