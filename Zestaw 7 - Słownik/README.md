@@ -16,7 +16,7 @@ usingPair = std::pair<K, V>;
     bool insert(const Pair& p);  // Dodaje parę klucz-wartość do słownika
     bool find(const K& k)        // Sprawdza czy słownik zawiera klucz
     V& operator[](const K& k);   // Zwraca wartość dla klucza
-    bool erase(const K& k);      // Usuwa parę od danym kluczu
+    bool erase(const K& k);      // Usuwa parę o danym kluczu
     int size();                  // Zwraca liczbę par
     bool empty();                // Sprawdza czy słownik jest pusty
     void buckets();              // Wypisuje informację o słowniku (patrz poniżej)
