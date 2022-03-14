@@ -15,7 +15,7 @@ class ArrayList {
 		array[0] = x;
 	}
 	
-    int pop_front() { // Usuwa i zwraca element z początku listy
+	int pop_front() { // Usuwa i zwraca element z początku listy
 		if (empty())
 			throw std::out_of_range("Pop from empty list");
 		
@@ -25,35 +25,35 @@ class ArrayList {
 		return result;
 	}
 	
-    void push_back(int x) { // Dołącza element na koniec listy
+	void push_back(int x) { // Dołącza element na koniec listy
 		if (size() == capacity)
 			throw std::out_of_range("Add to full list");
 		
 		array[_size++] = x;
 	}
 	
-    int pop_back() { // Usuwa i zwraca element z końca listy
+	int pop_back() { // Usuwa i zwraca element z końca listy
 		if (empty())
 			throw std::out_of_range("Pop from empty list");
 		
 		return array[--_size];
 	}
 	
-    int size() { // Zwraca liczbę elementów w liście
+	int size() { // Zwraca liczbę elementów w liście
 		return _size;
 	}
 	
-    bool empty() { // Zwraca true gdy lista jest pusta
+	bool empty() { // Zwraca true gdy lista jest pusta
 		if (size() > 0)
 			return false;
 		return true;
 	}
 	
-    void clear() { // Czyści listę
+	void clear() { // Czyści listę
 		_size = 0;
 	}
 	
-    int find(int x) { // Zwraca pozycję pierwszego elementu o wartości x
+	int find(int x) { // Zwraca pozycję pierwszego elementu o wartości x
 		
 		for (int i = 0; i < size(); i++)
 			if (array[i] == x)
@@ -62,7 +62,7 @@ class ArrayList {
 		return -1;
 	}
 	
-    int erase(int i) { // Usuwa i zwraca element na pozycji i
+	int erase(int i) { // Usuwa i zwraca element na pozycji i
 		
 		if (empty())
 			throw std::out_of_range("Erase from empty list");
@@ -73,7 +73,7 @@ class ArrayList {
 		return result;
 	}
 	
-    void insert(int i, int x) { // Wstawia element x przed pozycję i
+	void insert(int i, int x) { // Wstawia element x przed pozycję i
 		
 		if (size() + 1 >= capacity)
 			throw std::out_of_range("Insert to full list");
@@ -82,7 +82,7 @@ class ArrayList {
 		array[i] = x;
 	}
 	
-    int remove(int x) { // Usuwa wystąpienia x i zwraca ich liczbę
+	int remove(int x) { // Usuwa wystąpienia x i zwraca ich liczbę
 		
 		int count = 0;
 		

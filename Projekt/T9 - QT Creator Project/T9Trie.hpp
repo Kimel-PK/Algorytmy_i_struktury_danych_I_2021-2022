@@ -19,10 +19,10 @@ class T9Trie {
 			for (int i = 0; i < 8; i++)
 				nodes[i] = nullptr;
 		}
-
-        ~TrieNode () {
-            delete nodes;
-        }
+		
+		~TrieNode () {
+			delete nodes;
+		}
 		
 		TrieNode* GetParent() {
 			return parent;
@@ -34,7 +34,7 @@ class T9Trie {
 		
 		TrieNode* CreateChild (int i) {
 			nodes[i] = new TrieNode();
-            nodes[i]->parent = this;
+			nodes[i]->parent = this;
 			return nodes[i];
 		}
 		
@@ -46,9 +46,9 @@ class T9Trie {
 	
 	private:
 	TrieNode* root = nullptr;
-    TrieNode* current_node = root;
-    WordsList::WordNode* current_word;
-
+	TrieNode* current_node = root;
+	WordsList::WordNode* current_word;
+	
 	const std::map<char, int> CharToT9Number = {
 		{'a', 0},
 		{'b', 0},
@@ -66,43 +66,43 @@ class T9Trie {
 		{'n', 4},
 		{'o', 4},
 		{'p', 5},
-        {'q', 5},
+		{'q', 5},
 		{'r', 5},
 		{'s', 5},
 		{'t', 6},
 		{'u', 6},
-        {'v', 6},
+		{'v', 6},
 		{'w', 7},
-        {'x', 7},
-        {'y', 7},
-        {'z', 7}
+		{'x', 7},
+		{'y', 7},
+		{'z', 7}
 	};
 	
 	public:
 	
-    T9Trie () {
+	T9Trie () {
 		root = new TrieNode ();
 	}
-
-    private:
-    void T9TrieDestructor (TrieNode* node) {
-        if (node != nullptr) {
-            T9TrieDestructor (node->GetChild(0));
-            T9TrieDestructor (node->GetChild(1));
-            T9TrieDestructor (node->GetChild(2));
-            T9TrieDestructor (node->GetChild(3));
-            T9TrieDestructor (node->GetChild(4));
-            T9TrieDestructor (node->GetChild(5));
-            T9TrieDestructor (node->GetChild(6));
-            T9TrieDestructor (node->GetChild(7));
-            delete node;
-        }
-    }
-
-    public:
-    ~T9Trie () {
-        T9TrieDestructor (root);
-    }
+	
+	private:
+	void T9TrieDestructor (TrieNode* node) {
+		if (node != nullptr) {
+			T9TrieDestructor (node->GetChild(0));
+			T9TrieDestructor (node->GetChild(1));
+			T9TrieDestructor (node->GetChild(2));
+			T9TrieDestructor (node->GetChild(3));
+			T9TrieDestructor (node->GetChild(4));
+			T9TrieDestructor (node->GetChild(5));
+			T9TrieDestructor (node->GetChild(6));
+			T9TrieDestructor (node->GetChild(7));
+			delete node;
+		}
+	}
+	
+	public:
+	~T9Trie () {
+		T9TrieDestructor (root);
+	}
 	
 	void Add (std::string word, int frequency = 0) {
 
@@ -122,48 +122,47 @@ class T9Trie {
 		node->AddWord (word, frequency);
 	}
 	
-    void Reset () {
-        current_node = root;
-        current_word = root->words.GetFirstWord();
+	void Reset () {
+		current_node = root;
+		current_word = root->words.GetFirstWord();
 	}
 	
-    void Prev () {
-        if (current_node != root) {
-            current_node = current_node->GetParent();
-            if (current_node->words.Size() > 0 || current_node == root) {
-                current_word = current_node->words.GetFirstWord();
-            }
-        }
+	void Prev () {
+		if (current_node != root) {
+			current_node = current_node->GetParent();
+			if (current_node->words.Size() > 0 || current_node == root) {
+				current_word = current_node->words.GetFirstWord();
+			}
+		}
 	}
 	
-    void Next (int number) {
-        if (current_node->GetChild (number) != nullptr) {
-            current_node = current_node->GetChild (number);
-            if (current_node->words.Size() > 0) {
-                current_word = current_node->words.GetFirstWord();
-            }
-        }
-        current_node->words.ShowList();
+	void Next (int number) {
+		if (current_node->GetChild (number) != nullptr) {
+			current_node = current_node->GetChild (number);
+			if (current_node->words.Size() > 0) {
+				current_word = current_node->words.GetFirstWord();
+			}
+		}
+		current_node->words.ShowList();
 	}
 	
-    std::string GetWord () {
-        return current_word->value.word;
-    }
+	std::string GetWord () {
+		return current_word->value.word;
+	}
 
-    void NextWord () {
-        if (current_word->next->value.word == "")
-            current_word = current_word->next;
-        current_word = current_word->next;
-    }
+	void NextWord () {
+		if (current_word->next->value.word == "")
+			current_word = current_word->next;
+		current_word = current_word->next;
+	}
 
-    void Find (std::string word) {
-        Reset();
-        for (int i = 0; i < (int)word.size(); i++) {
-            Next (CharToT9Number.at(word.at(i)));
-        }
-        while (GetWord() != word) {
-            NextWord();
-        }
-    }
-	
+	void Find (std::string word) {
+		Reset();
+		for (int i = 0; i < (int)word.size(); i++) {
+			Next (CharToT9Number.at(word.at(i)));
+		}
+		while (GetWord() != word) {
+			NextWord();
+		}
+	}
 };

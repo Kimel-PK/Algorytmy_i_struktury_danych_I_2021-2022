@@ -31,5 +31,5 @@ $(EXEC2): $(OBJS2)
 $(EXEC3): $(OBJS3)
 	$(LD) -o $@ $(LFLAGS) $^
 
-clean:                                                     
+clean:
 	rm -f *.o  *~ *.a *.so *.x core core* a.out *.exe *.exe.stackdump

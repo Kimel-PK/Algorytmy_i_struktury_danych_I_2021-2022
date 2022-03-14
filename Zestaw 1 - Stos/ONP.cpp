@@ -7,10 +7,10 @@
 using namespace std;
 
 int main (int argc, char *argv[]) {
-    
-    string wejscie;
-    string wyjscie;
-    bool cyfra = false;
+	
+	string wejscie;
+	string wyjscie;
+	bool cyfra = false;
 	
 	map<char, int> priorytetOperatora {
 		{'(', 0},
@@ -23,8 +23,8 @@ int main (int argc, char *argv[]) {
 		{'^', 4},
 	};
 	
-    getline(cin, wejscie);
-    
+	getline(cin, wejscie);
+	
 	Stack<char, 20> stos;
 	
 	for (char znak : wejscie) {
@@ -38,9 +38,9 @@ int main (int argc, char *argv[]) {
 		}
 		
 		if (znak > 47 && znak < 58) { // znak jest cyfrą
-            wyjscie += znak; // wrzuć na wyjście
+			wyjscie += znak; // wrzuć na wyjście
 			cyfra = true;
-        } else { // znak jest operatorem
+		} else { // znak jest operatorem
 			if (znak == '(') {
 				stos.push (znak);
 			} else if (znak == ')') {
@@ -59,7 +59,7 @@ int main (int argc, char *argv[]) {
 				stos.push (znak);
 			}
 		}
-        
+		
 	}
 	
 	while (stos.size() > 0) {
@@ -72,5 +72,5 @@ int main (int argc, char *argv[]) {
 	}
 	
 	cout << wyjscie << endl;
-    
+	
 }

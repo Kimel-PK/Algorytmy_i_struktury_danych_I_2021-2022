@@ -24,7 +24,7 @@
 		{
 			"label": "Kopiuj rozwiązanie",
 			"type": "shell",
-			"options": {    
+			"options": {
 				"cwd": "${workspaceFolder}"
 			},
 			"command": "rm ./Pegaz/*.cpp; rm ./Pegaz/*.hpp; rm ./Pegaz/Makefile; cp *.cpp ./Pegaz/; cp *.hpp ./Pegaz/; cp Makefile ./Pegaz/",

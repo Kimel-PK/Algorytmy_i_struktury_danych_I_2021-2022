@@ -11,8 +11,8 @@ class WordsList {
 	
 	struct Word {
 		
-        std::string word;
-        int frequency;
+		std::string word;
+		int frequency;
 		
 		Word (std::string _word = "", int _freq = 0) {
 			word = _word;
@@ -22,7 +22,7 @@ class WordsList {
 	};
 	
 	struct WordNode {
-        Word value;
+		Word value;
 		WordNode* next;
 	};
 	
@@ -33,13 +33,13 @@ class WordsList {
 	}
 	
 	~WordsList () {
-        while (!Empty()) {
+		while (!Empty()) {
 
-            WordNode* temp = guard->next;
-            guard->next = guard->next->next;
+			WordNode* temp = guard->next;
+			guard->next = guard->next->next;
 
-            delete temp;
-            _size--;
+			delete temp;
+			_size--;
 		}
 		delete guard;
 	}
@@ -48,20 +48,20 @@ class WordsList {
 		return _size;
 	}
 	
-    bool Empty () {
+	bool Empty () {
 		if (_size == 0)
 			return true;
 		else
 			return false;
 	}
 	
-    void AddWord (Word x) {
+	void AddWord (Word x) {
 		
 		WordNode* temp = new WordNode();
 		temp->value = x;
 		
-        WordNode* insert = guard->next;
-        for (int i = 0; x.frequency < insert->next->value.frequency && i < Size(); i++) {
+		WordNode* insert = guard->next;
+		for (int i = 0; x.frequency < insert->next->value.frequency && i < Size(); i++) {
 			insert = insert->next;
 		}
 		
@@ -71,18 +71,18 @@ class WordsList {
 		
 	}
 
-    WordNode* GetFirstWord () {
-        return guard->next;
+	WordNode* GetFirstWord () {
+		return guard->next;
 	}
 
-    void ShowList () {
-        std::cout << "Słowa w obecnym węźle" << std::endl;
-        WordNode* node = guard->next;
-        while (node != guard) {
-            std::cout << node->value.word << " - " << node->value.frequency << std::endl;
-            node = node->next;
-        }
-    }
+	void ShowList () {
+		std::cout << "Słowa w obecnym węźle" << std::endl;
+		WordNode* node = guard->next;
+		while (node != guard) {
+			std::cout << node->value.word << " - " << node->value.frequency << std::endl;
+			node = node->next;
+		}
+	}
 
 	private:
 

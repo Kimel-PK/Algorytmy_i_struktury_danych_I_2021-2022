@@ -104,7 +104,7 @@ class List {
 	
 	struct Iterator {
 		
-        Iterator(Node* ptr) : m_ptr(ptr) {}
+		Iterator(Node* ptr) : m_ptr(ptr) {}
 		
 		Node& operator*() const {
 			return *m_ptr;
@@ -114,23 +114,23 @@ class List {
 			return m_ptr;
 		}
 		
-        Iterator operator++(int) {
+		Iterator operator++(int) {
 			m_ptr = m_ptr->next;
 			return *this;
 		}
 		
 		friend bool operator== (const Iterator& a, const Iterator& b) { return a.m_ptr == b.m_ptr; };
-        friend bool operator!= (const Iterator& a, const Iterator& b) { return a.m_ptr != b.m_ptr; };
+		friend bool operator!= (const Iterator& a, const Iterator& b) { return a.m_ptr != b.m_ptr; };
 		
-    private:
-        Node* m_ptr;
-    };
+	private:
+		Node* m_ptr;
+	};
 
-    Iterator begin() {
+	Iterator begin() {
 		return Iterator(guard->next);
 	}
 	
-    Iterator end() {
+	Iterator end() {
 		return Iterator(guard);
 	}
 	

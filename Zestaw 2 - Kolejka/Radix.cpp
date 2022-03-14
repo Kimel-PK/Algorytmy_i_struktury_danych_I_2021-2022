@@ -46,6 +46,6 @@ int main () {
 	radix (v);
 	
 	for(const auto& i : v)
-    	cout << i << endl;
+		cout << i << endl;
 	
 }

@@ -16,7 +16,7 @@ template <class T> void sort(std::vector<T>& v) {
 	v_sorted.push_back (temp);
 	
 	while (v.size() != 0) {
-	    
+		
 		temp = v.back();
 		v.pop_back();
 		

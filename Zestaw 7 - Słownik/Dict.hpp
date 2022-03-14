@@ -20,8 +20,8 @@ class Dict {
 			hash = hash * 31 + key.at(i);
 		}
 		
-        return hash % BUCKETS;
-    }
+		return hash % BUCKETS;
+	}
 	
 	public:
 	
